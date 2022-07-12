@@ -38,11 +38,11 @@ resource "aws_security_group_rule" "allow_all" {
   security_group_id = aws_security_group.hoangdl-sg.id
 }
 
-# data "aws_subnet_ids" "hoangdl-subnet-ids" {
-#   vpc_id = aws_default_vpc.default.id
-# }
+data "aws_subnet_ids" "hoangdl-subnet-ids" {
+  vpc_id = aws_default_vpc.default.id
+}
 
-# data "aws_subnet" "hoangdl-subnet" {
-#   for_each = data.aws_subnet_ids.hoangdl-subnet-ids.ids
-#   id       = each.value
-# }
+data "aws_subnet" "hoangdl-subnet" {
+  for_each = data.aws_subnet_ids.hoangdl-subnet-ids.ids
+  id       = each.value
+}
