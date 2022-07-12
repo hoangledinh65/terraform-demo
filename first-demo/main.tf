@@ -5,11 +5,11 @@ terraform {
       source  = "hashicorp/aws"
     }
   }
-  backend "s3" {
-    bucket = "dinhlehoangdemo-terraform-state"
-    key    = "./terraform.tfstate"
-    region = "ap-southeast-1"
-  }
+  # backend "s3" {
+  #   bucket = "dinhlehoangdemo-terraform-state"
+  #   key    = "./terraform.tfstate"
+  #   region = "ap-southeast-1"
+  # }
 }
 
 provider "aws" {
