@@ -24,6 +24,6 @@ resource "aws_instance" "hoangdl-amz-ec2" {
   key_name               = aws_key_pair.publickey.key_name
 
   tags = {
-    Name = "hoangdl-amz-ec2"
+    Name = "hoangdl-amz-ec223"
   }
 }
