@@ -1,3 +1,21 @@
+terraform {
+  required_providers {
+    aws = {
+      version = ">= 2.7.0"
+      source  = "hashicorp/aws"
+    }
+  }
+  backend "s3" {
+    bucket = "dinhlehoangdemo-terraform-state"
+    key    = "vpc/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
+}
+
+provider "aws" {
+  region = "ap-southeast-1"
+}
+
 resource "aws_default_vpc" "default" {
   tags = {
     Name = "Default VPC"
@@ -38,11 +56,6 @@ resource "aws_security_group_rule" "allow_all" {
   security_group_id = aws_security_group.hoangdl-sg.id
 }
 
-data "aws_subnet_ids" "hoangdl-subnet-ids" {
-  vpc_id = aws_default_vpc.default.id
-}
-
-data "aws_subnet" "hoangdl-subnet" {
-  for_each = data.aws_subnet_ids.hoangdl-subnet-ids.ids
-  id       = each.value
+output "sg-id" {
+  value = aws_security_group.hoangdl-sg.id
 }

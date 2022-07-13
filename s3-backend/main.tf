@@ -16,3 +16,13 @@ resource "aws_s3_bucket" "terraform_state" {
     prevent_destroy = true
   }
 }
+
+# resource "aws_s3_bucket" "terraform_state-vpc" {
+#   bucket = "dinhlehoangdemo-terraform-state-vpc"
+#   versioning {
+#     enabled = true
+#   }
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
