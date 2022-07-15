@@ -31,8 +31,8 @@ resource "aws_security_group" "hoangdl-sg" {
 
 resource "aws_security_group_rule" "HTTP-traffic" {
   type              = "ingress"
-  from_port         = 0
-  to_port           = 65535
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.hoangdl-sg.id
@@ -43,7 +43,7 @@ resource "aws_security_group_rule" "SSH-traffic" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = ["118.68.118.82/32"]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.hoangdl-sg.id
 }
 
@@ -58,4 +58,8 @@ resource "aws_security_group_rule" "allow_all" {
 
 output "sg-id" {
   value = aws_security_group.hoangdl-sg.id
+}
+
+output "vpc-id" {
+  value = aws_default_vpc.default.id
 }
