@@ -9,6 +9,7 @@ terraform {
     bucket = "dinhlehoangdemo-terraform-state"
     key    = "services/terraform.tfstate"
     region = "ap-southeast-1"
+    dynamodb_table = "hoangdl-locks"
   }
 }
 

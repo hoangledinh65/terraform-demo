@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "dinhlehoangdemo-terraform-state"
+    bucket = "dinhlehoangdemo-terraform-state-testing"
     key    = "services/terraform.tfstate"
     region = "ap-southeast-1"
   }
@@ -17,9 +17,12 @@ provider "aws" {
 }
 
 module "services" {
-  source = "git@github.com:hoangledinh65/terraform-module.git//services"
+  source = "git@github.com:hoangledinh65/terraform-module.git//services?ref=testing"
+  alb-name = "hoangdl-alb-testing"
+  target-group-name = "hoangdl-tg-testing"
+
 }
 
-module "vpc" {
-  source = "git@github.com:hoangledinh65/terraform-module.git//vpc"
+output "vpc-id" {
+  value = module.services.vpc-id
 }
