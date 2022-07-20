@@ -27,3 +27,9 @@ module "services" {
 output "vpc-id" {
   value = module.services.vpc-id
 }
+output "ec2-ip0" {
+  value = module.services.ec2-ip0
+}
+output "ec2-ip1" {
+  value = module.services.ec2-ip1
+}
