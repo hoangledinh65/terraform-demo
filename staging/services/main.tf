@@ -17,18 +17,18 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
-resource "aws_instance" "hoangdl-amz-ec2" {
-  count                  = 2
-  ami                    = "ami-0c802847a7dd848c0"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [data.terraform_remote_state.networking.outputs.sg-id]
-  key_name               = aws_key_pair.publickey.key_name
-  user_data              = file("userdata.sh")
+# resource "aws_instance" "hoangdl-amz-ec2" {
+#   count                  = 2
+#   ami                    = "ami-0c802847a7dd848c0"
+#   instance_type          = "t2.micro"
+#   vpc_security_group_ids = [data.terraform_remote_state.networking.outputs.sg-id]
+#   key_name               = aws_key_pair.publickey.key_name
+#   user_data              = file("userdata.sh")
 
-  tags = {
-    Name = "hoangdl-amz-ec223"
-  }
-}
+#   tags = {
+#     Name = "hoangdl-amz-ec223"
+#   }
+# }
 
 data "terraform_remote_state" "networking" {
   backend = "s3"
@@ -39,9 +39,6 @@ data "terraform_remote_state" "networking" {
     region = "ap-southeast-1"
   }
 }
-# data "aws_security_group" "sg" {
-#   name = "hoangdl-sg"
-# }
 
 data "aws_subnet_ids" "example" {
   vpc_id = data.terraform_remote_state.networking.outputs.vpc-id

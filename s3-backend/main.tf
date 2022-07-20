@@ -45,3 +45,12 @@ resource "aws_s3_bucket" "terraform-state-testing" {
     prevent_destroy = true
   }
 }
+resource "aws_s3_bucket" "terraform-state-dev" {
+  bucket = "dinhlehoangdemo-terraform-state-dev"
+  versioning {
+    enabled = true
+  }
+  lifecycle {
+    prevent_destroy = true
+  }
+}
