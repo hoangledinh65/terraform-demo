@@ -9,6 +9,7 @@ pipeline {
         steps {
             sh 'cd ./testing/vpc/'
             sh 'terraform --version'
+            sh 'terraform plan'
         }
         }
     }
