@@ -1,0 +1,17 @@
+
+
+0. Cài terraform plugin
+1. Chọn terraform ứng với architect, trong Global Tool Configuration 
+2. Config Jenkins để work with AWS:
+	config agent node: aws cli, git, java
+	install aws plugin
+	create aws credentials
+	using withCredential block
+	
+3. config Jenkins can ssh to Github, to pull Terraform module. Thay đổi source module => https
+4. sử dụng parameter của jenkins để: delete or apply
+
+=> 1 nút là có thể delete or create nhiều tài nguyên 
+
+
+Chỉ cần cài ansible vào agent, sau đó chạy lệnh ansible-playbook -i inventory playbook.yml là xong
