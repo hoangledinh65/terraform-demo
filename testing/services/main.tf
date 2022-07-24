@@ -22,6 +22,7 @@ module "services" {
   target-group-name = "hoangdl-tg-testing"
   lambda-function-name = "hoangdl"
   env = "testing"
+  bucket = "dinhlehoangdemo-terraform-state-testing"
 }
 
 output "vpc-id" {
